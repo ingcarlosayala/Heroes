@@ -1,0 +1,37 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #drawer mode="push" #side>
+        <mat-toolbar color="primary">
+            <span>Menu</span>
+            <span class="spaicer"></span>
+            <button mat-icon-button (click)="side.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-nav-list>
+            <button (click)="side.toggle()" mat-list-item routerLink="/heroe/listado">
+                <mat-icon  mat-list-icon>label</mat-icon>
+                <span>Listado de Heroes</span>
+            </button>
+            <button (click)="side.toggle()" mat-list-item routerLink="/heroe/agregar">
+                <mat-icon mat-list-icon>add</mat-icon>
+                <span >Añadir Heroes</span>
+            </button>
+
+            <button (click)="side.toggle()" mat-list-item routerLink="/heroe/buscar">
+                <mat-icon mat-list-icon>search</mat-icon>
+                <span >Buscar Heroes</span>
+            </button>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar>
+        <button mat-icon-button (click)="side.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spaicer"></span>
+        <button mat-button>
+           <mat-icon mat-list-icon>logout</mat-icon>
+           Logout
+        </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

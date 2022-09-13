@@ -1,0 +1,37 @@
+<div class="container my-4">
+    <h1>Buscar Heroes</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <form class="example-form">
+                <mat-form-field class="example-full-width w-100" appearance="fill">
+                  <mat-label>Heroe</mat-label>
+                  <input type="text"
+                         placeholder="Buscar heroe..."
+                         aria-label="Number"
+                         matInput
+                         name="termino"
+                         (input)="buscando()"
+                         [(ngModel)]="termino"
+                         [matAutocomplete]="auto">
+                  <mat-autocomplete autoActiveFirstOption (optionSelected)="seleccion($event)" #auto="matAutocomplete">
+                    <mat-option *ngFor="let heroe of heroes " [value]="heroe">
+                      {{heroe.superhero}}
+                    </mat-option>
+
+                    <mat-option value="" *ngIf="heroes.length === 0 && termino.trim().length > 0">
+                        No se encontro nada con el termino {{termino}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>          
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-8" *ngIf="heroeSeleccionado">
+          <pre>{{heroeSeleccionado | json}}</pre>
+        </div>
+    </div>
+</div>
